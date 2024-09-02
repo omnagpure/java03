@@ -1,0 +1,103 @@
+class Employee {
+    String Emp_name;
+    int Emp_id;
+    String Address;
+    String Mail_id;
+    String Mobile_no;
+    
+    Employee(String Emp_name, int Emp_id, String Address, String Mail_id, String Mobile_no) {
+        this.Emp_name = Emp_name;
+        this.Emp_id = Emp_id;
+        this.Address = Address;
+        this.Mail_id = Mail_id;
+        this.Mobile_no = Mobile_no;
+    }
+}
+class Programmer extends Employee {
+    double BP;
+    
+    Programmer(String Emp_name, int Emp_id, String Address, String Mail_id, String Mobile_no, double BP) {
+        super(Emp_name, Emp_id, Address, Mail_id, Mobile_no);
+        this.BP = BP;
+    }
+}
+
+class TeamLead extends Employee {
+    double BP;
+    
+    TeamLead(String Emp_name, int Emp_id, String Address, String Mail_id, String Mobile_no, double BP) {
+        super(Emp_name, Emp_id, Address, Mail_id, Mobile_no);
+        this.BP = BP;
+    }
+}
+
+class AssistantProjectManager extends Employee {
+    double BP;
+    
+    AssistantProjectManager(String Emp_name, int Emp_id, String Address, String Mail_id, String Mobile_no, double BP) {
+        super(Emp_name, Emp_id, Address, Mail_id, Mobile_no);
+        this.BP = BP;
+    }
+}
+
+class ProjectManager extends Employee {
+    double BP;
+    
+    ProjectManager(String Emp_name, int Emp_id, String Address, String Mail_id, String Mobile_no, double BP) {
+        super(Emp_name, Emp_id, Address, Mail_id, Mobile_no);
+        this.BP = BP;
+    }
+}
+class Employee {
+    // Existing attributes and constructor
+
+    double calculateDA(double BP) {
+        return 0.97 * BP;
+    }
+
+    double calculateHRA(double BP) {
+        return 0.10 * BP;
+    }
+
+    double calculatePF(double BP) {
+        return 0.12 * BP;
+    }
+
+    double calculateStaffClubFund(double BP) {
+        return 0.001 * BP;
+    }
+
+    double calculateGrossSalary(double BP) {
+        return BP + calculateDA(BP) + calculateHRA(BP);
+    }
+
+    double calculateNetSalary(double BP) {
+        return calculateGrossSalary(BP) - calculatePF(BP) - calculateStaffClubFund(BP);
+    }
+
+    void generatePaySlip() {
+        System.out.println("Employee Name: " + Emp_name);
+        System.out.println("Employee ID: " + Emp_id);
+        System.out.println("Basic Pay: " + BP);
+        System.out.println("DA: " + calculateDA(BP));
+        System.out.println("HRA: " + calculateHRA(BP));
+        System.out.println("PF: " + calculatePF(BP));
+        System.out.println("Staff Club Fund: " + calculateStaffClubFund(BP));
+        System.out.println("Gross Salary: " + calculateGrossSalary(BP));
+        System.out.println("Net Salary: " + calculateNetSalary(BP));
+    }
+}
+public class Main {
+    public static void main(String[] args) {
+        Programmer programmer = new Programmer("Alice", 101, "123 Street", "alice@mail.com", "1234567890", 50000);
+        TeamLead teamLead = new TeamLead("Bob", 102, "456 Avenue", "bob@mail.com", "0987654321", 70000);
+        AssistantProjectManager apm = new AssistantProjectManager("Charlie", 103, "789 Boulevard", "charlie@mail.com", "1122334455", 90000);
+        ProjectManager pm = new ProjectManager("Dave", 104, "101 Road", "dave@mail.com", "2233445566", 120000);
+
+        programmer.generatePaySlip();
+        teamLead.generatePaySlip();
+        apm.generatePaySlip();
+        pm.generatePaySlip();
+    }
+}
+
